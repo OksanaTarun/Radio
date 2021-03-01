@@ -115,4 +115,19 @@ class RadioTest {
         assertEquals(expected, radio.getCurrentVolume());
     }
 
+    @Test
+    public void setNextMaxChannelUp() {
+        radio.setCurrentChannel(9);
+        radio.setCurrentChannelUp();
+        int expected = 0;
+        assertEquals(expected, radio.nextMaxChannelUp());
+    }
+
+    @Test
+    public void setPrevChanneldown() {
+        radio.setCurrentChannel(0);
+        radio.setCurrentChannelDown();
+        int expected = 0;
+        assertEquals(expected, radio.nextMaxChannelUp());
+    }
 }
