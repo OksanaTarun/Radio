@@ -40,7 +40,7 @@ class RadioTest {
     }
 
     @Test
-    public void setMinCurrentChannel() {
+    public void setMinCurrentChannelDown() {
         radio.setCurrentChannel(0);
         int currentChannel = radio.prevMinChannel();
         radio.setCurrentChannel(currentChannel);
@@ -86,4 +86,33 @@ class RadioTest {
         int expected = 0;
         assertEquals(expected, radio.getCurrentVolume());
     }
+
+    @Test
+    public void setCurrentChannelOverLimit() {
+        radio.setCurrentChannel(10);
+        int expected = 0;
+        assertEquals(expected, radio.getCurrentChannel());
+    }
+
+    @Test
+    public void setCurrentChannelUnderLimit() {
+        radio.setCurrentChannel(-1);
+        int expected = 0;
+        assertEquals(expected, radio.getCurrentChannel());
+    }
+
+    @Test
+    public void setCurrentVolumeOverLimit() {
+        radio.setCurrentVolume(11);
+        int expected = 0;
+        assertEquals(expected, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void setCurrentVolumeUnderLimit() {
+        radio.setCurrentVolume(-1);
+        int expected = 0;
+        assertEquals(expected, radio.getCurrentVolume());
+    }
+
 }
