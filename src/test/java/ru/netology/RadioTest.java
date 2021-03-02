@@ -31,24 +31,6 @@ class RadioTest {
     }
 
     @Test
-    public void setMaxCurrentChannelUp() {
-        radio.setCurrentChannel(9);
-        int currentChannel = radio.nextMaxChannelUp();
-        radio.setCurrentChannel(currentChannel);
-        int expected = 0;
-        assertEquals(expected, radio.nextMaxChannelUp());
-    }
-
-    @Test
-    public void setMinCurrentChannelDown() {
-        radio.setCurrentChannel(0);
-        int currentChannel = radio.prevMinChannel();
-        radio.setCurrentChannel(currentChannel);
-        int expected = 9;
-        assertEquals(expected, radio.prevMinChannel());
-    }
-
-    @Test
     public void setCurrentVolume() {
         radio.setCurrentVolume(7);
         int expected = 7;
@@ -120,14 +102,14 @@ class RadioTest {
         radio.setCurrentChannel(9);
         radio.setCurrentChannelUp();
         int expected = 0;
-        assertEquals(expected, radio.nextMaxChannelUp());
+        assertEquals(expected, radio.getCurrentChannel());
     }
 
     @Test
     public void setPrevChanneldown() {
         radio.setCurrentChannel(0);
         radio.setCurrentChannelDown();
-        int expected = 0;
-        assertEquals(expected, radio.nextMaxChannelUp());
+        int expected = 9;
+        assertEquals(expected, radio.getCurrentChannel());
     }
 }

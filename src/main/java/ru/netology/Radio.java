@@ -25,31 +25,17 @@ public class Radio {
     public void setCurrentChannelUp() {
         if (currentChannel == maxChannel) {
             this.currentChannel = minChannel;
+        } else {
+            this.currentChannel++;
         }
-        this.currentChannel++;
     }
 
     public void setCurrentChannelDown() {
         if (currentChannel == minChannel) {
             this.currentChannel = maxChannel;
+        } else {
+            this.currentChannel--;
         }
-        this.currentChannel--;
-    }
-
-    public int nextMaxChannelUp() {
-        if (currentChannel == maxChannel) ;
-        {
-            maxChannel++;
-        }
-        return minChannel;
-    }
-
-    public int prevMinChannel() {
-        if (currentChannel == minChannel) ;
-        {
-            minChannel--;
-        }
-        return maxChannel;
     }
 
     public int getCurrentVolume() {
