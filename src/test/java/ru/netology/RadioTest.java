@@ -2,10 +2,13 @@ package ru.netology;
 
 import org.junit.jupiter.api.Test;
 
+import java.nio.charset.StandardCharsets;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-    Radio radio = new Radio();
+    int maxChannel = 10;
+    Radio radio = new Radio(10);
 
     @Test
     public void setCurrentChannelUp() {
@@ -39,25 +42,25 @@ class RadioTest {
 
     @Test
     public void setCurrentVolumeUp() {
-        radio.setCurrentVolume(9);
+        radio.setCurrentVolume(16);
         radio.setCurrentVolumeUp();
-        int expected = 10;
+        int expected = 17;
         assertEquals(expected, radio.getCurrentVolume());
     }
 
     @Test
     public void setCurrentVolumeDown() {
-        radio.setCurrentVolume(9);
+        radio.setCurrentVolume(50);
         radio.setCurrentVolumeDown();
-        int expected = 8;
+        int expected = 49;
         assertEquals(expected, radio.getCurrentVolume());
     }
 
     @Test
     public void setMaxCurrentVolumeUp() {
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.setCurrentVolumeUp();
-        int expected = 10;
+        int expected = 100;
         assertEquals(expected, radio.getCurrentVolume());
     }
 
@@ -71,7 +74,7 @@ class RadioTest {
 
     @Test
     public void setCurrentChannelOverLimit() {
-        radio.setCurrentChannel(10);
+        radio.setCurrentChannel(maxChannel + 1);
         int expected = 0;
         assertEquals(expected, radio.getCurrentChannel());
     }
@@ -85,7 +88,7 @@ class RadioTest {
 
     @Test
     public void setCurrentVolumeOverLimit() {
-        radio.setCurrentVolume(11);
+        radio.setCurrentVolume(111);
         int expected = 0;
         assertEquals(expected, radio.getCurrentVolume());
     }
@@ -99,17 +102,18 @@ class RadioTest {
 
     @Test
     public void setNextMaxChannelUp() {
-        radio.setCurrentChannel(9);
+        radio.setCurrentChannel(maxChannel);
         radio.setCurrentChannelUp();
         int expected = 0;
         assertEquals(expected, radio.getCurrentChannel());
     }
 
     @Test
-    public void setPrevChanneldown() {
+    public void setPrevChannelDown() {
         radio.setCurrentChannel(0);
         radio.setCurrentChannelDown();
-        int expected = 9;
+        int expected = maxChannel;
         assertEquals(expected, radio.getCurrentChannel());
     }
+
 }
